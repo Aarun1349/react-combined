@@ -1,6 +1,5 @@
 import React from "react";
-import { Label } from "reactstrap";
-import {TiDelete} from "react-icons/ti"
+import { TiDelete } from "react-icons/ti"
 function Todo() {
   const task = "";
   return (
@@ -26,7 +25,7 @@ function Todo() {
                 console.log(e);
               }}
             >
-              
+
               ADD NEW TASK
             </button>
           </form>
@@ -38,8 +37,8 @@ function Todo() {
         <div className="col-md-6">
           <h3 className="heading1">TODO LIST</h3>
           <div className="input-group mb-3">
-            <span onClick={console.log("clicked")} className="input-group-text"  style={{cursor:"pointer"}}id="basic-addon3">
-              <TiDelete/>
+            <span onClick={console.log("clicked")} className="input-group-text" style={{ cursor: "pointer" }} id="basic-addon3">
+              <TiDelete />
             </span>
             <input
               type="text"
@@ -51,7 +50,7 @@ function Todo() {
             />
           </div>
 
-         
+
         </div>
         <div className="col-md-3"></div>
       </div>

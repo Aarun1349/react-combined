@@ -1,9 +1,9 @@
-const increment =(type,payload)=>{
-    return{type:"INCREMENT",payload:1}
+const increment = (num) => {
+    return { type: "INCREMENT", payload: num }
 }
 
-const decrement =(type,payload)=>{
-    return{type:"DECREMENT",payload:1}
+const decrement = (num) => {
+    return { type: "DECREMENT", payload: num }
 }
 
-export {decrement,increment}
+export { decrement, increment }
