@@ -1,0 +1,20 @@
+.heading1{
+    text-align: center !important;
+    margin-top: 2em;
+}
+.container{
+    font-family: 'Montserrat';
+    font-size:300;
+}
+.card-text{
+    text-align: center !important;
+}
+.card-text:hover{
+    text-align: center !important;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.row{
+    margin-top: 2em;
+}
