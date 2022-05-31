@@ -1,3 +1,4 @@
 import { combineReducers } from "redux";
 import changeNumber from "./Reducer";
-export const rootReducer = combineReducers({ changeNumber })
+import calculateNumber from "./Calculator";
+export const rootReducer = combineReducers({ changeNumber, calculateNumber })
