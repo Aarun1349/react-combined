@@ -1,11 +1,14 @@
-const initialState = []
+const initialState = [{id:1,task:"one"}]
 
 const ToDoReducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case "ADD":
-            return state = [...state, action.payload];
+        case "ADD": 
+            let newState=[...state, action.payload]
+            state = newState
+            console.log("newState :",initialState)
+            return state 
         case "REMOVE":
             return state = initialState;
         case "DELETE":

@@ -3,9 +3,10 @@ import { TiDelete } from 'react-icons/ti'
 import { useSelector, useDispatch } from 'react-redux';
 import { AddNew, Delete, RemoveAll } from '../redux/actions/ToDoActions'
 function TodoRedux() {
-  const taskList = useSelector((state) => state.TodoRedux)
+  const state = useSelector((state) => state.TodoRedux)
   const dispatch = useDispatch();
   const [task, setTask] = useState('')
+  
   return (
     <div className="container">
       <div className="row">
@@ -21,16 +22,18 @@ function TodoRedux() {
 
                 e.preventDefault()
                 setTask(e.target.value)
-                console.log("Task:", task);
+                //console.log("Task:", task);
               }}
             ></input>
             <button
               type="submit"
               className="btn btn-warning form-control"
               style={{ marginTop: "1rem" }}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault()
                 dispatch(AddNew({ id: new Date().getTime().toString(), task: task }))
-                console.log(task);
+                setTask('')
+                console.log(state);
               }}
             >
 
@@ -40,7 +43,8 @@ function TodoRedux() {
               type="submit"
               className="btn btn-danger form-control"
               style={{ marginTop: "1rem" }}
-              onClick={() => {
+              onClick={(e) => {
+                e.preventDefault()
                 dispatch(RemoveAll())
               }}
             >
@@ -56,10 +60,11 @@ function TodoRedux() {
         <div className="col-md-6">
           <h3 className="heading1">TODO LIST</h3>
 
-          {taskList && taskList.map((item) => {
+          {state && state.map((item) => {
             return (
               <div className="input-group mb-3">
-                <span onClick={() => {
+                <span onClick={(e) => {
+                  e.preventDefault()
                   dispatch(Delete(item.id))
                 }} className="input-group-text" style={{ cursor: "pointer" }} id="basic-addon3">
                   <TiDelete />
