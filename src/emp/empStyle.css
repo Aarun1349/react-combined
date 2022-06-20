@@ -1,0 +1,39 @@
+.emp-form {
+  margin-top: 6rem !important;
+  background: #2f8585;
+  padding: 3rem;
+  width: fit-content;
+  float: right;
+  margin-right: 10rem;
+  border-radius: 5px;
+  opacity: 0.75;
+}
+
+.text-center {
+  color: white;
+  font-family: sans-serif;
+}
+
+.btn-secondary {
+  margin-top: 10px;
+}
+
+.emp-form-2 {
+  margin-top: 3rem !important;
+  background: #2f8585;
+  padding: 3rem;
+  width: fit-content;
+  float: right;
+  margin-right: 10rem;
+  border-radius: 5px;
+  opacity: 0.75;
+  box-shadow: 1px;
+}
+
+.emp-form-2 :hover {
+  opacity: 1;
+}
+
+.emp-form :hover {
+  opacity: 0.5;
+}

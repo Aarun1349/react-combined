@@ -11,7 +11,8 @@ import MonsterDetails from "./components/MonsterDetails";
 import Todo from "./components/Todo";
 import TodoRedux from "./components/TodoRedux";
 import ContextCounter from "./components/ContextCounter";
-
+import Emp from "./components/Emp";
+import EmpSignup from "./emp/EmpSignup";
 
 function App() {
   return (
@@ -28,6 +29,8 @@ function App() {
         <Route exact path="/phonebook" element={<Phonebook />}></Route>
         <Route exact path="/monsters" element={<Monsters />}></Route>
         <Route exact path="/contextcounter" element={<ContextCounter />}></Route>
+        <Route exact path="/emp" element={<Emp />}></Route>
+        <Route exact path="/emp-signup" element={<EmpSignup />}></Route>
         <Route
           exact
           path="/monsterdetails"

@@ -38,6 +38,9 @@ function Navbar() {
             <li className="nav-item">
               <Link className="nav-link active" to="/contextcounter">Context Counter</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link active" to="/emp">EMP</Link>
+            </li>
           </ul>
 
         </div>
