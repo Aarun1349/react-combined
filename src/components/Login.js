@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import arrow from "../images/arrow.jpg";
+import ComponentModal from "./ComponentModal";
+// import ComponentModal from "./ComponentModal";
 function Login() {
   const email = "";
   const password = "";
+  const [show, setShow] = useState(false);
+  const [show2, setShow2] = useState(false);
+  const showMessage = (message) => {
+    alert(message);
+  };
+  const toggleModal = () => {
+    setShow(!show);
+  };
+  const toggleModal2 = () => {
+    setShow2(!show2);
+  };
+
   return (
     <div className="container">
       <div className="row mt-3">
@@ -17,11 +31,7 @@ function Login() {
           </div>
         </div>
         <div className="col-md-6 col-sm-10">
-          
-          <div
-            className="mb-3"
-            style={{  marginTop: "10rem" }}
-          >
+          <div className="mb-3" style={{ marginTop: "10rem" }}>
             <h1 className="heading1"> SIGN IN</h1>
             <label htmlFor="emailId" className="form-label">
               Email address
@@ -51,14 +61,60 @@ function Login() {
                 console.log(e);
               }}
               type="password"
-              placeholder="password" required
+              placeholder="password"
+              required
             ></input>
-            <button class="btn btn-primary" style={{alignSelf:"center", marginTop:"3rem", display:"flexbox"}} type="submit">
+            <button
+              className="btn btn-primary"
+              style={{
+                alignSelf: "center",
+                marginTop: "3rem",
+                display: "flexbox",
+              }}
+              type="submit"
+            >
               LOGIN
+            </button>
+            <button
+              className="btn btn-primary"
+              style={{
+                alignSelf: "center",
+                marginTop: "3rem",
+                marginLeft: "3rem",
+                display: "flexbox",
+              }}
+              type="submit"
+              onClick={toggleModal}
+            >
+              Modal
+            </button>
+            <button
+              className="btn btn-secondary"
+              style={{
+                alignSelf: "center",
+                marginTop: "3rem",
+                marginLeft: "3rem",
+                display: "flexbox",
+              }}
+              onClick={toggleModal2}
+            >
+              Modal2
             </button>
           </div>
         </div>
       </div>
+      <ComponentModal
+        show={show}
+        toggleModal={toggleModal}
+        message={"immortal"}
+        showMessage={showMessage}
+      />
+      <ComponentModal
+        show={show2}
+        toggleModal={toggleModal2}
+        message={"My eternity is unquestionable"}
+        showMessage={showMessage}
+      />
     </div>
   );
 }
