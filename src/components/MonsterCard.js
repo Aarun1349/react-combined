@@ -12,9 +12,9 @@ function MonsterCard({ monster }) {
             {monster ? <div className="card" style={{ width: "13rem", marginBottom: "2rem" }}>
                 <img src={image} className="card-img-top" alt="monster" />
                 <div className="card-body">
-                    <btn className="card-text" onClick={() => { handleClick(monster.id) }}>
+                    <a className="card-text" onClick={() => { handleClick(monster.id) }}>
                         {monster.name}
-                    </btn>
+                    </a>
                 </div>
             </div > : "No monster to display"
             }

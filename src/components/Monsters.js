@@ -3,27 +3,40 @@ import MonsterCard from '../components/MonsterCard'
 function Monsters() {
   const [monsters, setMonsters] = useState([])
   const [search, setSearch] = useState('')
-
+  const [fileteredMonsters, setFilteredMonsters] = useState([])
   const getMonsters = async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/users');
     // const data = await response.json()
     setMonsters(await response.json());
-    console.log(monsters)
+    // console.log(monsters)
 
   }
   useEffect(() => {
     getMonsters();
   }, []);
 
+  useEffect(() => {
+    console.log("search",search)
+    const newFilteredMonsters =  monsters.filter((monster)=>{
+      return monster.name.toLocaleLowerCase().includes(search)
+    })
+    setFilteredMonsters(newFilteredMonsters)
+  
+    
+  }, [monsters,search])
+  
   const searchMonsters = (e) => {
     e.preventDefault();
-    setSearch(e.target.value)
-    const searched = monsters.filter((elem) => {
-      return elem.name.toLowerCase().includes(e.target.name.toLowerCase())
-    })
+    
+    setSearch(e.target.value.toLocaleLowerCase())
+    // const searched = monsters.filter((elem) => {
 
-    console.log("searched:", searched)
-    setMonsters(searched)
+    //   console.log(elem.name.toLowerCase().includes(e.target.name.toLowerCase()))
+    //   return elem.name.toLowerCase().includes(e.target.name.toLowerCase())
+    // })
+
+    // // console.log("searched:", searched)
+    // setMonsters(searched)
 
 
   }
@@ -37,9 +50,9 @@ function Monsters() {
 
       <div className="row">
         {
-          monsters.map((monster) => {
-            return <MonsterCard monster={monster} />
-            // return <h2>{monster.name}</h2>
+          fileteredMonsters.map((monster) => {
+            return <MonsterCard  key ={monster.id}monster={monster} />
+            
           })
         }
 

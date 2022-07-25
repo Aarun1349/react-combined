@@ -1,10 +1,42 @@
-import React from "react";
-import {IoPersonRemove} from 'react-icons/io5'
+import React, { useState } from "react";
+import { IoPersonRemove } from "react-icons/io5";
 
 function Phonebook() {
-  const firstName = "";
-  const lastName = "";
-  const contact = "";
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [contacts, setContacts] = useState([]);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    // let lastId = 0;
+    // if (contacts.length) {
+    //   lastId = contacts[contacts.length - 1].id;
+    // }
+
+    // let id = 1;
+    // console.log(lastId);
+    // if (lastId) {
+    //   id = lastId + 1;
+    // }
+    let message = "";
+    const contact = {
+      id: new Date().getTime().toString(),
+      firstName: firstName,
+      lastName: lastName,
+      mobile: mobile,
+    };
+    console.log("Contact", contact);
+    if (lastName && firstName && mobile) {
+      setContacts([...contacts, contact]);
+      setFirstName("");
+      setLastName("");
+      setMobile("");
+    } else {
+      message = "Please fill all fields";
+    }
+  };
+
   return (
     <div className="container">
       <div className="row mt-3">
@@ -18,7 +50,7 @@ function Phonebook() {
               type="text"
               value={firstName}
               onChange={(e) => {
-                console.log(e);
+                setFirstName(e.target.value);
               }}
               name="firstName"
               className="form-control"
@@ -35,7 +67,7 @@ function Phonebook() {
             type="text"
             value={lastName}
             onChange={(e) => {
-              console.log(e);
+              setLastName(e.target.value);
             }}
             name="lastName"
             className="form-control"
@@ -49,11 +81,11 @@ function Phonebook() {
           </label>
           <input
             type="text"
-            value={contact}
+            value={mobile}
             onChange={(e) => {
-              console.log(e);
+              setMobile(e.target.value);
             }}
-            name="contact"
+            name="mobile"
             className="form-control"
             id="contact"
             placeholder="Your contact number please"
@@ -62,21 +94,24 @@ function Phonebook() {
 
           <div className="mb-3">
             <button
-              class="btn btn-primary"
+              className="btn btn-primary"
               style={{
                 alignSelf: "center",
                 marginTop: "3rem",
                 display: "flexbox",
               }}
               type="submit"
+              onClick={(e) => handleClick(e)}
             >
               ADD
             </button>
           </div>
         </div>
         <div className="col-md-6 col-sm-10">
-
-          <table className="table" style={{ marginTop: "10rem", marginLeft:"5rem" }}>
+          <table
+            className="table"
+            style={{ marginTop: "10rem", marginLeft: "5rem" }}
+          >
             <thead>
               <tr>
                 <th>First Name</th>
@@ -84,17 +119,26 @@ function Phonebook() {
                 <th>Conatct Number</th>
                 <th>REMOVE</th>
               </tr>
-              </thead>
-              <tbody>
-              <tr>
-                <td>First Name</td>
-                <td>Last Name</td>
-                <td>Conatct Number</td>
-                <td><IoPersonRemove/></td>
-                {/* <td><IoPersonRemove/></td> */}
-              </tr>
-              </tbody>
-            
+            </thead>
+            <tbody>
+              {contacts.map((contact) => {
+                const { id, firstName, lastName, mobile } = contact;
+                return (
+                  <tr key={id}>
+                    <td>{firstName}</td>
+                    <td>{lastName}</td>
+                    <td>{mobile}</td>
+                    <td>
+                      <IoPersonRemove />
+                    </td>
+                    {/* <td><IoPersonRemove/></td> */}
+                  </tr>
+                );
+              })}
+            </tbody>
+            <tfoot>
+              {/* <h5>{message.length && message}</h5> */}
+            </tfoot>
           </table>
         </div>
       </div>

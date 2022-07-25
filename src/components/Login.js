@@ -3,10 +3,11 @@ import arrow from "../images/arrow.jpg";
 import ComponentModal from "./ComponentModal";
 // import ComponentModal from "./ComponentModal";
 function Login() {
-  const email = "";
-  const password = "";
+  const [email,setEmail] = useState('')
+  const [password,setPassword] = useState('')
   const [show, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
+  const [entry ,setEntry] = useState([])
   const showMessage = (message) => {
     alert(message);
   };
@@ -17,6 +18,30 @@ function Login() {
     setShow2(!show2);
   };
 
+  const handleSubmit =(e)=>{
+    e.preventDefault();
+    const newEntry ={email:email,password:password}
+    setEntry([...entry,newEntry])
+    console.log(entry)
+
+    setPassword('');
+     setEmail('')
+  }
+ const handleChange=(e)=>{
+  e.preventDefault();
+  switch(e.target.name){
+    case "email":
+      setEmail(e.target.value)
+      break;
+    case "password":
+      setPassword(e.target.value)
+      break;
+    default:
+      console.log('Please verfiy first')
+      break
+  }
+
+ }
   return (
     <div className="container">
       <div className="row mt-3">
@@ -40,7 +65,7 @@ function Login() {
               type="email"
               value={email}
               onChange={(e) => {
-                console.log(e);
+                handleChange(e)
               }}
               name="email"
               className="form-control"
@@ -58,11 +83,12 @@ function Login() {
               id="password"
               value={password}
               onChange={(e) => {
-                console.log(e);
+                handleChange(e)
               }}
               type="password"
               placeholder="password"
               required
+              name="password"
             ></input>
             <button
               className="btn btn-primary"
@@ -72,6 +98,7 @@ function Login() {
                 display: "flexbox",
               }}
               type="submit"
+              onClick={(e)=>{handleSubmit(e)}}
             >
               LOGIN
             </button>
